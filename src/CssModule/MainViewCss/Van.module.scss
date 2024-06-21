@@ -1,0 +1,118 @@
+@use '../Common/mixins' as mix;
+@use '../Common/variables' as var;
+
+.container {
+    @include mix.DarkMode(var.$dark-mode-on);
+    @include mix.Test(var.$test-on);
+    display: grid;
+    width: 100vw;
+    height: auto;
+    grid-template-columns: 0.7fr 6fr 0.7fr;
+    grid-template-rows: 1.2fr 0.3fr 10fr 6fr 3fr;
+    grid-template-areas:
+            "header_left header_center header_right"
+            "divider divider divider"
+            "main_left main_center main_right"
+            "side_left side_center side_right"
+            "footer footer footer";
+    .header_left{
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.Test(var.$test-on);
+        grid-area: header_left;
+    }
+    .header_center {
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.flexDisplay(center, center);
+        @include mix.Test(var.$test-on);
+        grid-area: header_center;
+        
+            .svg_design {
+                @include mix.DarkMode(var.$dark-mode-on);
+                @include mix.Test(var.$test-on);
+                background-image: url("../../../public/Assets/Standader3.svg");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                width: 500px;
+                height: 100px;
+            }
+    }
+    .header_right {
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.Test(var.$test-on);
+        grid-area: header_right;
+    }
+    .divider_design {
+        @include mix.DarkMode(var.$dark-mode-on, var.$dark-mode-border);
+        @include mix.Test(var.$test-on);
+        @include mix.flexDisplay(center, center, row);
+        grid-area: divider;
+        .divider {
+            border: 0.3px solid black;
+            width: 87%;
+            height:auto;
+        }
+    }
+    .main_left {
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.Test(var.$test-on);
+        grid-area: main_left;
+    }
+    .main_center {
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.Test(var.$test-on);
+        grid-area: main_center;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 30px;
+        grid-auto-flow: row;
+        .cell_design {
+            @if var.$dark-mode-on == true {
+                color: black;
+            }
+            @include mix.Test(var.$test-on);
+            @include mix.flexDisplay(center, center);
+            height: 70px;
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: white;
+            border-radius: 5px; 
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
+                         0 2px 4px rgba(0, 0, 0, 0.06); 
+          }
+          
+    }
+    .main_right {
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.Test(var.$test-on);
+        grid-area: main_right;
+    }
+    .side_left {
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.Test(var.$test-on);
+    }
+    .side_center {
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.Test(var.$test-on);
+    }
+    .side_right {
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.Test(var.$test-on);
+    }
+    
+
+    .footer_design {
+        @include mix.DarkMode(var.$dark-mode-on, var.$dark-mode-border);
+        @include mix.flexDisplay(center, flex-end);
+        grid-area: footer;
+        background-color: rgb(80, 80, 80);
+        p {
+            margin-left: 3px;
+            margin-top: 3px;
+        }
+    }
+}

@@ -1,0 +1,115 @@
+@use '../Common/mixins' as mix;
+@use '../Common/variables' as var;
+
+$container-width: 100vw;
+$container-height: 100vh;
+$container-border-radius: 30px;
+$container-box-shadow: 20;
+
+$form-box-width:500px;
+$form-box-height:500px;
+
+.container {
+    @include mix.Test(var.$test-on);
+    @include mix.flexDisplay(center, center);
+    width: $container-width;
+    height: $container-height;
+    border-radius: $container-border-radius;
+    box-shadow: $container-box-shadow;
+
+    .container_box {
+        @include mix.Test(var.$test-on);
+        @include mix.flexDisplay(center, center);
+        .form_box {
+            @include mix.Test(var.$test-on);
+            @include mix.flexDisplay(center, center, column);
+            padding-bottom: 400px;
+            width: $form-box-width;
+            height: $form-box-height;
+            gap: 20px;
+            border: 2px solid #2e2e2e;
+            border-radius: 30px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            background: white;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            
+            .logo_box{
+                @include mix.Test(var.$test-on);
+                display:block;
+            }
+            .id_box {
+                @include mix.Test(var.$test-on);
+                width: 300px;
+                height: 40px;
+                padding: 0 10px;
+                border-radius: 20px;
+                border: 2px solid rgb(85, 68, 68);
+                outline: none;
+                transition: border-color 0.3s;
+                
+                &:focus {
+                    border-color: #007BFF;
+                }
+                
+            }
+            .password_box {
+                @include mix.Test(var.$test-on);
+                width: 300px;
+                height: 40px;
+                padding: 0 10px;
+                border-radius: 20px;
+                border: 2px solid rgb(85, 68, 68);
+                outline: none;
+                transition: border-color 0.3s;
+                &:focus {
+                    border-color: #007BFF;
+                }
+            }
+
+            .submit_box {
+                @include mix.Test(var.$test-on);
+                width: 310px;
+                height: 40px;
+                padding: 0 10px;
+                background-color: black;
+                color: white;
+                border-radius: 20px;
+                cursor: pointer;
+                outline: none;
+                transition: background-color 0.3s, border-color 0.3s;
+
+                &:hover {
+                    background-color: #333;
+                    border-color: #007BFF;
+                }
+            }
+        }
+        .link_box {
+            @include mix.Test(var.$test-on);
+            @include mix.flexDisplay(space-between);
+            
+            gap:10px;
+            width: 100%;
+            margin-top: 20px; 
+
+            .signUp_box, .findCredential_box {
+                @include mix.Test(var.$test-on);
+                color: #000000; 
+                text-decoration: none;
+                font-size: 14px;
+                &:hover {
+                    text-decoration: underline; 
+                }
+            }
+        }
+    }
+}
+
+
+
+/* .form_box:hover {
+    transform: scale(1.02);
+    box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
+} */

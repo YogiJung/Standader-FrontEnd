@@ -1,0 +1,29 @@
+@use '../Common/variables' as var;
+
+@mixin Test($test-on) {
+    @if $test-on == true {
+        border: var.$border-test;
+    }
+}
+
+@mixin flexDisplay($justify-content, $align-items : stretch, $flex-direction : row) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-direction: $flex-direction;
+}
+
+@mixin gridLayout($justify-content, $align-items) {
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
+@mixin DarkMode($dark-mode-on, $apply-border : false) {
+    @if $dark-mode-on == true {
+        background-color: black !important;
+        color:white !important;
+        @if $apply-border == true {
+            border: 0.3px solid white !important;
+        }
+    }
+}

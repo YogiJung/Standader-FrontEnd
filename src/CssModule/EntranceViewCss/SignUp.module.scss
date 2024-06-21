@@ -1,0 +1,55 @@
+@use '../Common/mixins' as mix;
+@use '../Common/variables' as var;
+//@extend 로 스타일 상속가능
+
+
+.container {
+    @include mix.flexDisplay(center, center);
+    @include mix.Test(var.$test-on);
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff; 
+    .form_box {
+        @include mix.flexDisplay(space-evenly, center, column);
+        @include mix.Test(var.$test-on);
+        width: 300px;
+        height: 700px;
+        background-color: #ffffff; 
+        border: 2px solid #000000; 
+        border-radius: 25px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        padding: 20px;
+
+        .id_box, .password_box, .password_check_box {
+            @include mix.Test(var.$test-on);
+            width: 270px;
+            height: 40px;
+            padding: 10px 15px;
+            border: 1px solid #000000; 
+            border-radius: 15px;
+            background-color: #ffffff; 
+            outline: none;
+            font-size: 14px;
+            margin-bottom: 15px;
+            &:hover {
+                border-color: #4CAF50; 
+            }
+        }
+        .submit_box {
+            @include mix.Test(var.$test-on);
+            width: 270px;
+            height: 40px;
+            padding: 10px 15px;
+            border: 1px solid #000000; 
+            border-radius: 15px;
+            background-color: #000000; 
+            color: #ffffff; 
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            &:hover {
+                background-color: #333333;
+            }
+        }
+    }
+}

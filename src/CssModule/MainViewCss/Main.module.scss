@@ -1,0 +1,241 @@
+@use '../Common/mixins' as mix;
+@use '../Common/variables' as var;
+
+$container-height: 100vh;
+$profile-container-height :33%;
+$comment-container-height: 13%;
+$img-height: calc(100% - #{$profile-container-height} - #{$comment-container-height});
+@mixin navigator_class() {
+    .navigator_start {
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.Test(var.$test-on);
+        @include mix.flexDisplay(start, start, column);
+        width:100%;
+        height:auto;
+        .navigator_divider {
+            @include mix.DarkMode(var.$dark-mode-on, var.$dark-mode-border);
+            width: 80%;
+            height: auto;
+            border: 0.3px solid black;
+            margin-bottom: 3em;    
+        }
+        .navigator_profile {
+            width:100%;
+            @include mix.Test(var.$test-on);
+            @include mix.flexDisplay(space-between, stretch, row);
+            align-items: center;
+
+            .link_style {
+                @include mix.DarkMode(var.$dark-mode-on);
+                text-decoration: none;
+                color: black;
+            }
+
+            .svg_profile_design {
+                @include mix.Test(var.$test-on);
+                background-image: url("../../../public/Assets/UI/profile.svg");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                width: 60px;
+                height: 60px;
+            }
+        }
+        .navigator_chat {
+            width:100%;
+            @include mix.Test(var.$test-on);
+            @include mix.flexDisplay(space-between, stretch, row);
+            align-items: center;
+            .link_style {
+                @include mix.DarkMode(var.$dark-mode-on);
+                text-decoration: none;
+                color:black;
+            }
+
+            .svg_chat_design {
+                @include mix.Test(var.$test-on);
+                background-image: url("../../../public/Assets/UI/chat.svg");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                width: 60px;
+                height: 60px;
+            }
+        }
+        .navigator_van {
+            width:100%;
+            @include mix.Test(var.$test-on);
+            @include mix.flexDisplay(space-between, stretch, row);
+            align-items: center;
+            .link_style {
+                @include mix.DarkMode(var.$dark-mode-on);
+                color:black;
+                text-decoration: none;
+            }
+            
+            .svg_van_design {
+                @include mix.Test(var.$test-on);
+                background-image: url("../../../public/Assets/UI/van.svg");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                width: 60px;
+                height: 60px;
+            }
+        }
+    }
+    .navigator_end {
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.Test(var.$test-on);
+        @include mix.flexDisplay(end, start, column);
+        width:100%;
+        height:auto;
+
+        .navigator_divider {
+            @include mix.DarkMode(var.$dark-mode-on,var.$dark-mode-border);
+            width: 80%;
+            height: auto;
+            border: 0.3px solid black;
+            margin-top: 15px;
+        }
+        .navigator_logout {
+            width:100%;
+            @include mix.Test(var.$test-on);
+            @include mix.flexDisplay(space-between, stretch, row);
+            align-items: center;
+            .link_style {
+                @include mix.DarkMode(var.$dark-mode-on);
+                text-decoration: none;
+            }
+            
+            .svg_logout_design {
+                @include mix.Test(var.$test-on);
+                background-image: url("../../../public/Assets/UI/logout.svg");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                width: 30px;
+                height: 30px;
+                padding-left: 2rem;
+            }
+        }
+    }
+    
+}
+.container {
+    @include mix.DarkMode(var.$dark-mode-on);
+    @include mix.Test(var.$test-on);
+    width:100%;
+    height:auto;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 0.5fr 7fr 0.5fr;
+    grid-template-areas: 
+                        "main_left main_center main_right";
+    border-top: none;
+    overflow-x: scroll;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    &::-webkit-scrollbar { 
+        display: none; /* Chrome, Safari, Opera*/
+    }
+    @if var.$test-on == true {
+        border: 3px solid black;
+    }
+    row-gap: 0;
+
+    
+    .main_left {
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.Test(var.$test-on);
+
+        grid-area: main_left;
+        
+    }
+    .main_center {
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.Test(var.$test-on);
+        @include mix.flexDisplay(center, center, row);
+        grid-area: main_center;
+        height: auto;
+        
+        .post_layer {
+            @include mix.DarkMode(var.$dark-mode-on, var.$dark-mode-border);
+            @include mix.Test(var.$test-on);
+            @include mix.flexDisplay(center, center, column);
+            width: 100%;
+            height: auto;
+            border: 0.3px solid black;
+            border-bottom: none;
+            border-top: none;
+            .profile_container {
+                @include mix.DarkMode(var.$dark-mode-on, var.$dark-mode-border);
+                @include mix.flexDisplay(space-between, space-between, row);
+                @include mix.Test(var.$test-on);
+                width:100%;
+                height:$profile-container-height;
+                border: 0.3px solid black;
+                overflow: hidden;
+                .profile_image {
+                    @include mix.DarkMode(var.$dark-mode-on, var.$dark-mode-border);
+
+                    border: 0.3px solid black;
+                    border-radius: 50%;
+                    width:30px;
+                    height:30px;
+                    overflow: hidden;
+                    margin-top: 8px;
+                    margin-left: 8px;
+                    img {
+                        @include mix.DarkMode(var.$dark-mode-on);
+                        @include mix.Test(var.$test-on);
+                        width:100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .profile_name {
+                    @include mix.DarkMode(var.$dark-mode-on);
+                    p {
+                        @include mix.DarkMode(var.$dark-mode-on);
+                        @include mix.Test(var.$test-on);
+                        width:30%;
+                        height: 30%;
+                    }
+                }
+            }
+            .image_container {
+                @include mix.DarkMode(var.$dark-mode-on);
+                @include mix.Test(var.$test-on);
+                width:100%;
+                img {
+                    @include mix.DarkMode(var.$dark-mode-on);
+                    @include mix.Test(var.$test-on);
+                    width:100%;
+                    height: $img-height;
+                }
+            }
+            .comment_container {
+                @include mix.DarkMode(var.$dark-mode-on, var.$dark-mode-border);
+                @include mix.Test(var.$test-on);
+                width:100%;
+                height:$comment-container-height;
+                border: 0.3px solid black;
+            }
+        }
+        .reference {
+            @include mix.DarkMode(var.$dark-mode-on);
+            width:30%;
+            height:10%;
+            
+        }
+    }
+    .main_right {
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.Test(var.$test-on);
+        grid-area: main_right;
+    }
+
+}

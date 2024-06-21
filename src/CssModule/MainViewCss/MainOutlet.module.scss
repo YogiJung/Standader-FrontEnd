@@ -1,0 +1,200 @@
+@use '../Common/mixins' as mix;
+@use '../Common/variables' as var;
+
+
+@mixin navigator_class() {
+    .navigator_start {
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.Test(var.$test-on);
+        @include mix.flexDisplay(start, start, column);
+        width:100%;
+        height:auto;
+        .navigator_divider {
+            @include mix.DarkMode(var.$dark-mode-on, var.$dark-mode-border);
+            width: 80%;
+            height: auto;
+            border: 0.3px solid black;
+        }
+        .navigator_main {
+            width:100%;
+            @include mix.Test(var.$test-on);
+            @include mix.flexDisplay(center, stretch, row);
+            align-items: center;
+            
+            .svg_van_design {
+                @include mix.Test(var.$test-on);
+                background-image: url("../../../public/Assets/Standader3.svg");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                width: 120px;
+                height: 120px;
+
+            }
+        }
+        .navigator_profile {
+            width:100%;
+            @include mix.Test(var.$test-on);
+            @include mix.flexDisplay(space-between, stretch, row);
+            align-items: center;
+
+            .link_style {
+                @include mix.DarkMode(var.$dark-mode-on);
+                text-decoration: none;
+                color: black;
+            }
+
+            .svg_profile_design {
+                @include mix.Test(var.$test-on);
+                background-image: url("../../../public/Assets/UI/profile.svg");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                width: 60px;
+                height: 60px;
+            }
+        }
+        .navigator_chat {
+            width:100%;
+            @include mix.Test(var.$test-on);
+            @include mix.flexDisplay(space-between, stretch, row);
+            align-items: center;
+            .link_style {
+                @include mix.DarkMode(var.$dark-mode-on);
+                text-decoration: none;
+                color:black;
+            }
+
+            .svg_chat_design {
+                @include mix.Test(var.$test-on);
+                background-image: url("../../../public/Assets/UI/chat.svg");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                width: 60px;
+                height: 60px;
+            }
+        }
+        .navigator_van {
+            width:100%;
+            @include mix.Test(var.$test-on);
+            @include mix.flexDisplay(space-between, stretch, row);
+            align-items: center;
+            .link_style {
+                @include mix.DarkMode(var.$dark-mode-on);
+                color:black;
+                text-decoration: none;
+            }
+            
+            .svg_van_design {
+                @include mix.Test(var.$test-on);
+                background-image: url("../../../public/Assets/UI/van.svg");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+    }
+    .navigator_end {
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.Test(var.$test-on);
+        @include mix.flexDisplay(end, start, column);
+        width:100%;
+        height:auto;
+
+        .navigator_divider {
+            @include mix.DarkMode(var.$dark-mode-on,var.$dark-mode-border);
+            width: 80%;
+            height: auto;
+            border: 0.3px solid black;
+        }
+        .navigator_logout {
+            width:100%;
+            @include mix.Test(var.$test-on);
+            @include mix.flexDisplay(space-between, stretch, row);
+            align-items: center;
+            .link_style {
+                @include mix.DarkMode(var.$dark-mode-on);
+                text-decoration: none;
+            }
+            
+            .svg_logout_design {
+                @include mix.Test(var.$test-on);
+                background-image: url("../../../public/Assets/UI/logout.svg");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                width: 30px;
+                height: 30px;
+
+            }
+        }
+    }
+    
+}
+
+.container {
+    @include mix.DarkMode(var.$dark-mode-on);
+    @include mix.Test(var.$test-on);
+    width:100vw;
+    height:auto;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas: 
+                        "main_left main_center main_right";
+    border-top: 0.3px solid black;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    &::-webkit-scrollbar { 
+        display: none; /* Chrome, Safari, Opera*/
+    }
+
+    .outlet_design {
+        @include mix.Test(var.$test-on);
+        // background-color: black;
+    }
+
+    
+    .main_left {
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.Test(var.$test-on);
+        border-left: 0.3px solid black;
+        
+        grid-area: main_left;
+        .not_fixed_navigator {
+            @include navigator_class();
+            @include mix.DarkMode(var.$dark-mode-on, var.$dark-mode-border);
+            @include mix.Test(var.$test-on);
+            @include mix.flexDisplay(space-between, space-between, column);
+            position:absolute;
+
+            width:20%;
+            height:100vh;
+            // border: 3px solid black;
+            border-right: 0.3px solid black;
+        }
+        .fixed_navigator {
+            @include navigator_class();
+            @include mix.DarkMode(var.$dark-mode-on, var.$dark-mode-border);
+            @include mix.Test(var.$test-on);
+            @include mix.flexDisplay(space-between, space-between, column);
+            position:fixed;
+            top:0;
+            width:20%;
+            height:100vh;
+            // border: 3px solid black;
+            border-right: 0.3px solid black;
+        }
+    }
+    .main_right {
+
+        @include mix.Test(var.$test-on);
+    }
+}

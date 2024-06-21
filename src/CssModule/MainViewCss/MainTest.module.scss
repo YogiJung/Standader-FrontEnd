@@ -1,0 +1,119 @@
+@use '../Common/mixins' as mix;
+@use '../Common/variables' as var;
+
+
+$profile-container-height :33%;
+$comment-container-height: 13%;
+$img-height: calc(100% - #{$profile-container-height} - #{$comment-container-height});
+
+.container {
+    @include mix.DarkMode(var.$dark-mode-on);
+    @include mix.flexDisplay(center, center);
+    @include mix.Test(var.$test-on);
+    width:100vw;
+    height: auto;
+    overflow-x: hidden;
+    .navigation_container {
+        @include mix.DarkMode(var.$dark-mode-on);
+        @include mix.Test(var.$test-on);
+        @include mix.flexDisplay(start, start, column);
+        position:fixed;
+        top:0;
+        right: 0;
+        width: 22%; //15% // 22%
+        height:100vh;
+        border-left: 0.3px solid black;
+        .navigator {
+            @include mix.DarkMode(var.$dark-mode-on);
+            @include mix.flexDisplay(start, start, row);
+            margin-left: 3px;
+            .link_style {
+                color: black;
+                text-decoration: none;
+            }
+        }
+
+        .navigation_divider {
+            width:100%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border:0.3px solid black;
+        }
+        .navigator_bottom {
+
+            @include mix.flexDisplay(end, start, column);
+            width:100%;
+            height: 100%;
+            p {
+                margin-left: 3px;
+            }
+        }
+    }
+    .post_layer {
+        @include mix.flexDisplay(center, center, row);
+        @include mix.Test(var.$test-on);
+        width:70%;
+        height: auto;
+        .post_medium {
+            @include mix.flexDisplay(center, center, column);
+            @include mix.Test(var.$test-on);
+            width:80%;
+            height: auto;
+            .post_container {
+                @include mix.flexDisplay(center, center, column);
+                @include mix.Test(var.$test-on);
+                width:80%;
+                height: 100%;
+                overflow: hidden;
+                border: 0.3px solid black;
+                margin-top: 30px;
+                .profile_container {
+                    @include mix.flexDisplay(space-between, space-between, row);
+                    @include mix.Test(var.$test-on);
+                    width:100%;
+                    height:$profile-container-height;
+                    border: 0.3px solid black;
+                    overflow: hidden;
+                    .profile_image {
+                        border: 0.3px solid black;
+                        border-radius: 50%;
+                        width:30px;
+                        height:30px;
+                        overflow: hidden;
+                        margin-top: 8px;
+                        margin-left: 8px;
+                        img {
+                            @include mix.Test(var.$test-on);
+                            width:100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                    .profile_name {
+                        p {
+                            @include mix.Test(var.$test-on);
+                            width:30%;
+                            height: 30%;
+                        }
+                    }
+                }
+                img {
+                    @include mix.Test(var.$test-on);
+                    width:60%;
+                    height: $img-height;
+                }
+                .comment_container {
+                    @include mix.Test(var.$test-on);
+                    width:100%;
+                    height:$comment-container-height;
+                    border: 0.3px solid black;
+                }
+            }
+            .reference {
+                width:30%;
+                height:10%;
+                color: red;
+            }
+        }
+    }
+}

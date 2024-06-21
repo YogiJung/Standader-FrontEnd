@@ -1,0 +1,15 @@
+@use '../Common/mixins' as mix;
+@use '../Common/variables' as var;
+
+$text-box-width: 30px;
+$text-box-height: 30px;
+
+.container {
+    @include mix.Test(var.$test-on);
+    .text_box {
+        @include mix.Test(var.$test-on);
+        color:red;
+        width: $text-box-width;
+        height: $text-box-height;
+    }
+}

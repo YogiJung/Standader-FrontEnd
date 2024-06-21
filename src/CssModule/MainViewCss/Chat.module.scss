@@ -1,0 +1,132 @@
+@use '../Common/mixins' as mix;
+@use '../Common/variables' as var;
+
+.container {
+    @include mix.DarkMode(var.$dark-mode-on);
+    @include mix.Test(var.$test-on);
+    display: grid;
+    width:100vw;
+    height: 100vh;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 10fr;
+    grid-template-areas: "header_left header_center header_right"
+                         "main_left main_center main_right";
+    // border-right: 0.3px solid black;
+    .header_left {
+        @include mix.Test(var.$test-on);
+        grid-area: header_left;
+    }
+    .header_center {
+        grid-area: header_center;
+        @include mix.Test(var.$test-on);
+        @include mix.flexDisplay(space-evenly, center, row);
+        border-right: 0.3px solid black;
+        
+        .chat_plus_container {
+            @include mix.Test(var.$test-on);
+            @include mix.flexDisplay(space-evenly, center, column);
+            width:20%;
+            height:100%;
+            .chat_plus_design {
+                @include mix.Test(var.$test-on);
+                background-image: url("../../../public/Assets/UI/chat-plus.svg");
+                background-repeat: no-repeat;
+                background-position: center;
+                object-fit: cover;
+                width:20%;
+                height:40%;
+            }
+            p {
+                @include mix.Test(var.$test-on);
+                color: black;
+                width:100%;
+                height:50%;
+                margin-top: 3rem;
+            }
+        }
+        .divider {
+            @include mix.Test(var.$test-on);
+            flex-direction: column;
+            border-right: 0.3px solid black;
+            height:60%;
+        }
+    }
+    .header_right {
+        grid-area: header_right;
+        @include mix.Test(var.$test-on);
+    }
+    .main_left {
+        grid-area: main_left;
+        @include mix.Test(var.$test-on);
+    }
+    .main_center {
+        grid-area: main_center;
+        @include mix.Test(var.$test-on);
+        @include mix.flexDisplay(start, start, column);
+        border-right: 0.3px solid black;
+        .chatroom_container {
+            @include mix.Test(var.$test-on);
+            width:100%;
+            height: 20%;
+            
+        
+        .chatroom_design {
+            @include mix.Test(var.$test-on);
+            width:100%;
+            height: 100%;
+            border: 0.3px solid black;
+            @include mix.flexDisplay(space-between, center, row);
+            // overflow: hidden;
+            .chatroom_logo_container {
+                @include mix.Test(var.$test-on);
+                @include mix.flexDisplay(center, center);
+                width:10%;
+                height:100%;
+                margin-left: 3rem;
+                overflow: hidden;
+                .chatroom_logo {
+                    @include mix.Test(var.$test-on);
+                    background-image: url("../../../public/Assets/Standader3.svg");
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    object-fit: cover;
+                    border-radius: 50%;
+                    width:70%;
+                    border: 0.3px solid black;
+                    aspect-ratio: 1 / 1;
+                    
+                }
+            }
+            .divider {
+                flex-direction: column;
+                border: 0.3px solid black;
+                height:45%;
+            }
+            .chat_preview_container {
+                @include mix.Test(var.$test-on);
+                width:70%;
+                height:100%;
+                margin-right: 3rem;
+                overflow-y: scroll;
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none; /* Internet Explorer 10+ */
+                &::-webkit-scrollbar { 
+                    display: none; /* Chrome, Safari, Opera*/
+                }
+                p {
+                    color: black;
+                    text-decoration: none;
+                    display:inline-block;
+                    margin-left: 3rem;
+                }
+            }
+            }
+            
+        }
+
+    }
+    .main_right {
+        grid-area: main_right;
+        @include mix.Test(var.$test-on);
+    }
+}
